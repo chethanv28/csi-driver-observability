@@ -11,6 +11,8 @@ standard Kubernetes CSI sidecar containers (`external-provisioner`,
 > # Open http://localhost:3000 (admin / changeme)
 > ```
 
+![CSI Driver — Volume Operations Dashboard](docs/images/dashboard-preview.svg)
+
 ---
 
 ## How it works
@@ -223,6 +225,24 @@ curl -sg "$PROM/api/v1/query" \
 
 See [`driver-profiles/vsphere/README.md`](driver-profiles/vsphere/README.md) for
 the vSphere setup guide.
+
+---
+
+## Dashboard UI (React app)
+
+A standalone React dashboard is included in `ui/` for ad-hoc viewing or
+embedding into an internal portal — no Grafana required.
+
+```bash
+cd ui
+npm install
+npm run dev     # http://localhost:5173
+npm run build   # outputs static files to ui/dist/
+```
+
+The UI uses the same mock data as the Docker Compose stack and supports the
+same three scenarios (Normal / Degraded / Failing) via interactive toggle pills.
+See [`ui/README.md`](ui/README.md) for details on connecting to a live Prometheus.
 
 ---
 
